@@ -5,6 +5,6 @@ This is a website clone of the Google Art Project Extension to be used as start 
 
 Just set the following page as start page for a new tab:
 
-https://denbue.github.io/Google-Art-Project-Clone/
+https://yrotak.github.io/Google-Art-Project-Clone/
 
 

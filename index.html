@@ -20,35 +20,23 @@
 </head>
 <body>
 <div class="cc">
-  <h1><a href=""></a></h1>
+  <h1><a href=""></a><button class="refresh" onclick="newArt()"><img class="refreshimg" src="refresh.svg"/></button></h1>
   <a class="creator"></a> | <a class="gallery"></a>
   <p>Art Project from <a href="https://www.google.com/culturalinstitute/">Google Cultural Institute</a>
 </div>
 <script>
-	$.getJSON( "https://www.gstatic.com/culturalinstitute/tabext/imax.json", function(data) {
-
-		var cookie = Cookies.get('item');
-		var random, item;
-
-		if (typeof cookie == "undefined") {
-		  var length = data.length;
-		  var random = Math.floor((Math.random() * length) + 1);
-		  item = data[random];
-		  Cookies.set("item", random, {expires:1});
-		}
-		else {
-		  random = parseInt(Cookies.get('item'));
-		  item = data[random];
-		}
-
-		console.log(item)
-
-	  $("body").css("background-image","url("+item.image+"=s1200)");
-	  $("h1 a").text(item.title).attr("href", "https://www.google.com/culturalinstitute/" + item.link);
-	  $(".creator").text(item.creator).attr("href", item.artist_link);
-	  $(".gallery").text(item.attribution).attr("href", "https://www.google.com/culturalinstitute/" + item.attribution_link);
-
-	});
-
+	function newArt() {
+		$.getJSON( "https://www.gstatic.com/culturalinstitute/tabext/imax.json", function(data) {
+			var random = Math.floor((Math.random() * length) + 1);
+			item = data[random];
+			console.log(item)
+		
+			$("body").css("background-image","url("+item.image+"=s1200)");
+			$("h1 a").text(item.title).attr("href", "https://www.google.com/culturalinstitute/" + item.link);
+			$(".creator").text(item.creator).attr("href", item.artist_link);
+			$(".gallery").text(item.attribution).attr("href", "https://www.google.com/culturalinstitute/" + item.attribution_link);
+		});
+	}
+	newArt()
 </script>
 </body>
